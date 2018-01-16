@@ -1,0 +1,48 @@
+sample codebook.
+
+It's very similar to a Statistical Analysis Plan, actually.
+
+Setup, there is a dogwalking business. It wants to analyze its work.
+
+Raw data is: name of dog, address of owner, time walked, date walked, size of dog (small, medium, or large), health of dog (well or sick) on that date and time, comments, and pay.
+
+The business wants to assign ID# to the dogs, and codewords to the address to make this data anonymous. There isn't anything to do to the comments--since free text is all over the place.
+
+Codebook: The dog's name was transformed into an IDNumber (unique) (1-50), the address was transformed into a factor, OwnerName (levels Alice, Bob, Charlie, Deborah, Ernest and Fred), time and date walked were counted to make WalksPerWeek1, WalksPerWeek2, and WalksPerWeek3. Week1 begins at 00:01UTC on July1, 2014, Week2 begins at 00:01UTC on July8, 2014, Week3 begins at 00:01UTC on July15, 2014. Health was summarized as HealthWeek1, HealthWeek2, and HealthWeek3. It is a factor with two levels, Well and Sick. If the dog was sick at any walk during that week, dog was marked sick, else dog was marked well. Dog Size was converted into a factor: Large, Medium and Small are the levels. Comments are dropped. Pay is transformed into PayWeek1, PayWeek2, PayWeek3, which is a factor that has two levels (Yes, and No) for correct pay paid during that week.
+
+
+
+Short description of the project
+
+##Study design and data processing
+
+###Collection of the raw data Description of how the data was collected.
+
+###Notes on the original (raw) data Some additional notes (if avaialble, otherwise you can leave this section out).
+
+##Creating the tidy datafile
+
+###Guide to create the tidy data file Description on how to create the tidy data file (1. download the data, ...)/
+
+###Cleaning of the data Short, high-level description of what the cleaning script does. link to the readme document that describes the code in greater detail
+
+##Description of the variables in the tiny_data.txt file General description of the file including:
+
+Dimensions of the dataset
+Summary of the data
+Variables present in the dataset
+(you can easily use Rcode for this, just load the dataset and provide the information directly form the tidy data file)
+
+###Variable 1 (repeat this section for all variables in the dataset) Short description of what the variable describes.
+
+Some information on the variable including:
+
+Class of the variable
+Unique values/levels of the variable
+Unit of measurement (if no unit of measurement list this as well)
+In case names follow some schema, describe how entries were constructed (for example time-body-gyroscope-z has 4 levels of descriptors. Describe these 4 levels).
+(you can easily use Rcode for this, just load the dataset and provide the information directly form the tidy data file)
+
+####Notes on variable 1: If available, some additional notes on the variable not covered elsewehere. If no notes are present leave this section out.
+
+##Sources Sources you used if any, otherise leave out
