@@ -1,48 +1,43 @@
-sample codebook.
+Codebook.
+Get-Clean-Data-Project
+This project is the Coursera/JHU Data Science course "Getting and Cleaning Data"
+# week 4/ course end project
+# Data imported from provided data set and found here
+# http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+# Data read into Rstudio Verison 1.1.383 // Windows 10_ 64 bit
 
-It's very similar to a Statistical Analysis Plan, actually.
+Project Instructions:
+You should create one R script called run_analysis.R that does the following.
+1.	Merges the training and the test sets to create one data set.
+2.	Extracts only the measurements on the mean and standard deviation for each measurement.
+3.	Uses descriptive activity names to name the activities in the data set
+4.	Appropriately labels the data set with descriptive variable names.
+5.	From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+Data
+Data was derived from the “Human Activity Recognition Using Smartphones” Dataset
+Provided from Smartlab – Non Linear Complex Systems Lab
+Data consists of recordings taken from 30 subjects in 6 activities using Smartphone gyro/accelerometer attached to subject waist.  3 axial linear acceleration and angular velocity were captured at a 50 HZ rate.  Sensor signals were pre-processed with noise filters, sampled, corrected and processed through mathematical transformations (Euclidean Norm and Fast Fourier Transform).  Specifics are described in the HCI data readme and the features_info file.
+Resulting files used contained:
+	'README.txt'
 
-Setup, there is a dogwalking business. It wants to analyze its work.
+	'features_info.txt': Shows information about the variables used on the feature vector.
 
-Raw data is: name of dog, address of owner, time walked, date walked, size of dog (small, medium, or large), health of dog (well or sick) on that date and time, comments, and pay.
+	'features.txt': List of all features measured.  No units provided.
+Ex:  1 tBodyAcc-mean()-X,    2 tBodyAcc-mean()-Y and 559 more described in txt file.
 
-The business wants to assign ID# to the dogs, and codewords to the address to make this data anonymous. There isn't anything to do to the comments--since free text is all over the place.
+	'activity_labels.txt': Links the class labels with their activity name.
+i.e.  1 Walking, 2 Walking Upstairs, 3 Walking Downstairs, 4 Sitting, 5 Standing, 6 Laying
 
-Codebook: The dog's name was transformed into an IDNumber (unique) (1-50), the address was transformed into a factor, OwnerName (levels Alice, Bob, Charlie, Deborah, Ernest and Fred), time and date walked were counted to make WalksPerWeek1, WalksPerWeek2, and WalksPerWeek3. Week1 begins at 00:01UTC on July1, 2014, Week2 begins at 00:01UTC on July8, 2014, Week3 begins at 00:01UTC on July15, 2014. Health was summarized as HealthWeek1, HealthWeek2, and HealthWeek3. It is a factor with two levels, Well and Sick. If the dog was sick at any walk during that week, dog was marked sick, else dog was marked well. Dog Size was converted into a factor: Large, Medium and Small are the levels. Comments are dropped. Pay is transformed into PayWeek1, PayWeek2, PayWeek3, which is a factor that has two levels (Yes, and No) for correct pay paid during that week.
+	'train/X_train.txt': Training set.
 
+	'train/y_train.txt': Training labels.
+	‘test/X_test.txt’:  Test set.
 
+	‘test/y_test.txt’: Test labels
+The subjects were broken into 2 groups: 75% in the train group and 25% in the test group.  The main data set – numerical recordings – were contained in the X_test/train files which contained 561 variables.  These are described in the features.txt file.  Training/Test labels determined subject and activity was pulled from activity txt file.  
+Data cleaning and Processing
+Data was read into Rstudio and checked for reasonableness. A thorough description of the R coding is contained in the readme file.  R script is in ‘run_analysis.R’.
+Essentially, the test and train data (X_...  files) were read into dataframes.  Added to each was the subjects and activities into 2 dataframes (test/train).  The ‘features.txt’ contained a column of variable names.  These character names were extracted and added to test/train dataframes as column names, along with ‘subject’ and ‘activity’ for the 1st two columns.
+These two df were then merged into one combined dataframe containing all observations.  Assignment called for extracting observed variables containing ‘mean’ or ‘standard deviation.’  Using R functions (grep), we received the indices of the columns necessary, and used them to subset into a new dataframe.  Activity code numbers were replaced with descriptive names.
+Finally, analysis was done to manipulate previous data frame as per instructions: providing new dataframe with the average value for each subject/activity.  The final independent df had dim of 180 x 92.  That is, 180 rows (30 subjects x 6 activities) and columns for subject, activity, and 90 mean/std value feature variables.
 
-Short description of the project
-
-##Study design and data processing
-
-###Collection of the raw data Description of how the data was collected.
-
-###Notes on the original (raw) data Some additional notes (if avaialble, otherwise you can leave this section out).
-
-##Creating the tidy datafile
-
-###Guide to create the tidy data file Description on how to create the tidy data file (1. download the data, ...)/
-
-###Cleaning of the data Short, high-level description of what the cleaning script does. link to the readme document that describes the code in greater detail
-
-##Description of the variables in the tiny_data.txt file General description of the file including:
-
-Dimensions of the dataset
-Summary of the data
-Variables present in the dataset
-(you can easily use Rcode for this, just load the dataset and provide the information directly form the tidy data file)
-
-###Variable 1 (repeat this section for all variables in the dataset) Short description of what the variable describes.
-
-Some information on the variable including:
-
-Class of the variable
-Unique values/levels of the variable
-Unit of measurement (if no unit of measurement list this as well)
-In case names follow some schema, describe how entries were constructed (for example time-body-gyroscope-z has 4 levels of descriptors. Describe these 4 levels).
-(you can easily use Rcode for this, just load the dataset and provide the information directly form the tidy data file)
-
-####Notes on variable 1: If available, some additional notes on the variable not covered elsewehere. If no notes are present leave this section out.
-
-##Sources Sources you used if any, otherise leave out
