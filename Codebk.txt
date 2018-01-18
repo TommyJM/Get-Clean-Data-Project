@@ -12,7 +12,9 @@ You should create one R script called run_analysis.R that does the following.
 2.	Extracts only the measurements on the mean and standard deviation for each measurement.
 3.	Uses descriptive activity names to name the activities in the data set
 4.	Appropriately labels the data set with descriptive variable names.
-5.	From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+5.	From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity 
+and each subject.
+
 Data
 Data was derived from the “Human Activity Recognition Using Smartphones” Dataset
 Provided from Smartlab – Non Linear Complex Systems Lab
@@ -34,10 +36,13 @@ i.e.  1 Walking, 2 Walking Upstairs, 3 Walking Downstairs, 4 Sitting, 5 Standing
 	‘test/X_test.txt’:  Test set.
 
 	‘test/y_test.txt’: Test labels
+
 The subjects were broken into 2 groups: 75% in the train group and 25% in the test group.  The main data set – numerical recordings – were contained in the X_test/train files which contained 561 variables.  These are described in the features.txt file.  Training/Test labels determined subject and activity was pulled from activity txt file.  
+
 Data cleaning and Processing
 Data was read into Rstudio and checked for reasonableness. A thorough description of the R coding is contained in the readme file.  R script is in ‘run_analysis.R’.
-Essentially, the test and train data (X_...  files) were read into dataframes.  Added to each was the subjects and activities into 2 dataframes (test/train).  The ‘features.txt’ contained a column of variable names.  These character names were extracted and added to test/train dataframes as column names, along with ‘subject’ and ‘activity’ for the 1st two columns.
-These two df were then merged into one combined dataframe containing all observations.  Assignment called for extracting observed variables containing ‘mean’ or ‘standard deviation.’  Using R functions (grep), we received the indices of the columns necessary, and used them to subset into a new dataframe.  Activity code numbers were replaced with descriptive names.
+Essentially, the test and train data (X_...  files) were read into dataframes.  Added to each were the subjects and activities resulting in 2 dataframes (test/train).  The ‘features.txt’ contained a column of variable names.  These character names were extracted and added to test/train dataframes as column names, along with ‘subject’ and ‘activity’ for the 1st two columns.
+These two df were then merged into one combined dataframe containing all observations.  Assignment called for extracting observed variables containing ‘mean’ or ‘standard deviation.’  Using R functions (grep), we received the indices of the columns necessary, and used them to subset into a new dataframe.  Also, activity code numbers were replaced with descriptive names.
+
 Finally, analysis was done to manipulate previous data frame as per instructions: providing new dataframe with the average value for each subject/activity.  The final independent df had dim of 180 x 92.  That is, 180 rows (30 subjects x 6 activities) and columns for subject, activity, and 90 mean/std value feature variables.
 
